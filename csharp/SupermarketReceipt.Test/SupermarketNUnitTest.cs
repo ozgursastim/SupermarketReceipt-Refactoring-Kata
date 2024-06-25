@@ -7,8 +7,8 @@ namespace SupermarketReceipt.Test
     [TestFixture]
     public sealed class SupermarketNUnitTest
     {
+        private const double tolarance = 0.010000000000000009d;
         private SupermarketCatalog catalog;
-        private SupermarketCatalog product;
 
         [SetUp]
         public void Setup()
@@ -63,7 +63,7 @@ namespace SupermarketReceipt.Test
 
             var receipt = teller.ChecksOutArticlesFrom(cart);
 
-            Assert.That(receipt.GetTotalPrice, Is.EqualTo(0.99).Within(0.1));
+            Assert.That(receipt.GetTotalPrice, Is.EqualTo(0.99).Within(tolarance));
         }
 
         [Test]
@@ -79,7 +79,7 @@ namespace SupermarketReceipt.Test
 
             var receipt = teller.ChecksOutArticlesFrom(cart);
 
-            Assert.That(receipt.GetTotalPrice, Is.EqualTo(1.98).Within(0.1));
+            Assert.That(receipt.GetTotalPrice, Is.EqualTo(1.98).Within(tolarance));
         }
     }
 }
